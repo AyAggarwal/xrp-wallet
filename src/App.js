@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-import login from "./components/Login/login"
+import wallet from "./components/Wallet/wallet"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
@@ -11,7 +10,7 @@ class App extends Component {
       <Router>
         <div className = "App">
           <Switch>
-            <Route exact path = "/" component={login} />
+            <Route exact path = "/" component={wallet} />
           </Switch>
         </div>
       </Router>
