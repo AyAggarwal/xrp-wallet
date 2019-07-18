@@ -101,7 +101,8 @@ class wallet extends Component {
             frame.getBalance(); 
         })
         .catch(function (error) {
-            alert(error.response.data.errors[0].message)
+            alert(error)
+            console.log(error.response)
         })
     }
     
