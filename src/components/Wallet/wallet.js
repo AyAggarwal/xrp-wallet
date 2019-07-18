@@ -123,13 +123,16 @@ class wallet extends Component {
                 <button onClick={this.handleClickBalance}>Update Balance</button>
                 <div></div>
                 <br />
+                <h2>To Send XRP, Enter The Following</h2>
                 <input type="text" name="secret" placeholder="Secret" onChange={this.handleChange} />
+                <br />
+                <input type="text" name="Bearer_key" placeholder="API_KEY" onChange={this.handleChange} />
                 <br />
                 <input type="text" name="destination_address" placeholder="Destination Account" onChange={this.handleChange} />
                 <br />
                 <input type="text" name="sendAmount" placeholder="Amount" onChange={this.handleChange} />
                 <br />
-                <button onClick={this.handleClickSend}>Sell your Soul to my wallet</button>
+                <button onClick={this.handleClickSend}>$$$Transact$$$</button>
                 <br />
                 <h3>{this.state.sendMessage}</h3> 
                 <h3>{this.state.sendTX}</h3>
