@@ -35,7 +35,6 @@ class wallet extends Component {
             address: localStorage.getItem('address'),
             secret: localStorage.getItem('secret'),
         })
-        
         this.getBalance()
     }
 
