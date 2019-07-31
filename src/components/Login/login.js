@@ -23,7 +23,7 @@ class login extends Component {
 
   async handleClickCredentials(e) {
       try {
-        e.preventDefault();
+        e.preventDefault(); 
         localStorage.clear()
         await this.getTestnetCredentials()
         await this.sleep(1000)
