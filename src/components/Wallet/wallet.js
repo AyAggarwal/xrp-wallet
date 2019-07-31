@@ -19,8 +19,27 @@ class wallet extends Component {
         this.handleClickBalance = this.handleClickBalance.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleClickSend = this.handleClickSend.bind(this)
+        this.handleClickTest = this.handleClickTest.bind(this)
+        this.componentWillMount = this.componentWillMount.bind(this)
 
     }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async componentWillMount() {
+        //change state here so it renders
+        console.log(localStorage.getItem('address'))
+        await this.setState({
+            address: localStorage.getItem('address'),
+            secret: localStorage.getItem('secret'),
+        })
+        
+        this.getBalance()
+    }
+
+    
 
     handleChange(event) {
         this.setState({
@@ -105,17 +124,22 @@ class wallet extends Component {
             console.log(error.response)
         })
     }
+
+    handleClickTest(e) {
+        e.preventDefault();
+        console.log(this.state.address)
+    }
     
 
     
 
     render() {
+        
         return (
             <form>
-                <h1>XRP API DEMO :D</h1>
+                <h1>XRP API DEMO</h1>
                 <br />
-                <h2>Enter Your XRPL Address</h2>
-                <input type="text" name="address" placeholder="Address" onChange={this.handleChange} />
+                <h2>Your XRPL Addy: {this.state.address}</h2>
                 <br />
                 
                 <h3>Live Balance: {this.state.balance}</h3>
@@ -124,10 +148,6 @@ class wallet extends Component {
                 <div></div>
                 <br />
                 <h2>To Send XRP, Enter The Following</h2>
-                <input type="text" name="secret" placeholder="Secret" onChange={this.handleChange} />
-                <br />
-                <input type="text" name="Bearer_key" placeholder="API_KEY" onChange={this.handleChange} />
-                <br />
                 <input type="text" name="destination_address" placeholder="Destination Account" onChange={this.handleChange} />
                 <br />
                 <input type="text" name="sendAmount" placeholder="Amount" onChange={this.handleChange} />
@@ -136,11 +156,8 @@ class wallet extends Component {
                 <br />
                 <h3>{this.state.sendMessage}</h3> 
                 <h3>{this.state.sendTX}</h3>
+                <button onClick={this.handleClickTest}>TEST BUTTON</button>
             </form>
-            
-
-            
-            
         )
     }
 

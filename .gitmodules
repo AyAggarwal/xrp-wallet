@@ -1,0 +1,4 @@
+[submodule "xrp-api"]
+	path = xrp-api
+	url = https://github.com/intelliot/xrp-api.git
+	branch = master
