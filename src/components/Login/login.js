@@ -9,6 +9,8 @@ class login extends Component {
     this.state = {
       address: "",
       secret: "",
+      username: "",
+      password: "",
       errors: {}
     };
 
@@ -22,6 +24,7 @@ class login extends Component {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  //textbox -> state
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -46,8 +49,7 @@ class login extends Component {
     try {
       e.preventDefault()
       localStorage.clear()
-      localStorage.setItem("address", this.state.address)
-      localStorage.setItem("secret", this.state.secret)
+      localStorage.setItem("username", this.state.username)
     } catch (error) {
       console.log(error)
     }
