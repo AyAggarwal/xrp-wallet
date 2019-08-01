@@ -6,10 +6,9 @@ class wallet extends Component {
     constructor() {
         super()
         this.state = {
-            address: "",
-            secret: "",
+            address: "r465pZJwxqF5m1zXkob7KakodLovtcoBJ8",
+            secret: "saGrUaJjznq4t9NbDQErSJZoPWUnP",
             Bearer_key: "d9c056421fa594304a2b0ef4d84775c9",
-            balance: 0,
             destination_address: "",
             sendAmount: "",
             sendMessage: "",
@@ -31,10 +30,6 @@ class wallet extends Component {
     async componentWillMount() {
         //change state here so it renders
         console.log(localStorage.getItem('address'))
-        await this.setState({
-            address: localStorage.getItem('address'),
-            secret: localStorage.getItem('secret'),
-        })
         this.getBalance()
     }
 

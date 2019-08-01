@@ -13,7 +13,7 @@ class App extends Component {
           <Switch>
             <Route exact path = "/wallet" component={wallet} />
             <Route exact path = "/" component={login} />
-
+            
           </Switch>
         </div>
       </Router>
