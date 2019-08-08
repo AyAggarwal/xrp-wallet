@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-
+import "../Wallet/wallet.css"
 const axios = require('axios')
 
 class wallet extends Component {
@@ -221,22 +221,23 @@ class wallet extends Component {
                 <br />
                 <h2>User: {this.state.username}</h2>
                 <br />
-                <h3>Live Balance: {this.state.balance}</h3>
-                <button onClick={this.handleClickBalance}>Update Balance</button>
+                <h3 className = "balance">Live Balance: {this.state.balance}</h3>
+                
                 <div></div>
                 <br />
                 <h2>To Send XRP, Enter The Following</h2>
-                <input type="text" name="destination_address" placeholder="Destination Account" onChange={this.handleChange} />
+                <input className = "text" type="text" name="destination_address" placeholder="Destination Account" onChange={this.handleChange} />
                 <br />
-                <input type="text" name="sendAmount" placeholder="Amount" onChange={this.handleChange} />
+                <input className = "text" type="text" name="sendAmount" placeholder="Amount" onChange={this.handleChange} />
                 <br />
-                <input type="text" name="sendDestTag" placeholder="Destination Tag" onChange={this.handleChange} />
+                <input className = "text" type="text" name="sendDestTag" placeholder="Destination Tag" onChange={this.handleChange} />
                 <br />
-                <button onClick={this.handleClickSend}>$$$Transact$$$</button>
+                <br />
+                <button className = "transact" onClick={this.handleClickSend}>$$$Transact$$$</button>
                 <br />
                 <h3>{this.state.sendMessage}</h3>
                 <h3>{this.state.sendTX}</h3>
-                <button onClick={this.handleClickLogout}>LOGOUT</button>
+                <button className = "logout" onClick={this.handleClickLogout}>LOGOUT</button>
             </form>
         )
     }

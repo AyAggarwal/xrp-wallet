@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../Login/login.css"
 const axios = require('axios')
 
 
@@ -49,6 +50,10 @@ class login extends Component {
   loginWallet(event) {
     event.preventDefault();
     localStorage.clear();
+    if (this.state.username === "Admin") {
+      this.props.history.push("/admin")
+      return
+    }
     let path = "http://localhost:4000/user/" + this.state.username
     let frame = this
 
@@ -126,17 +131,18 @@ class login extends Component {
 
         
         
-          <input type="text" name="username" placeholder="User" onChange={this.handleChange} />
-          <button onClick = {this.loginWallet}>Login</button>
+          <input className = "text" type="text" name="username" placeholder="User" onChange={this.handleChange} />
+          <br/>
+          <button className = "button" onClick = {this.loginWallet}>Login</button>
            
         </div>
         <div>
           <h2>Signup</h2>
-          <input type="text" name="destTag" placeholder="Destination Tag" onChange={this.handleChange} />
+          <input className = "text" type="text" name="destTag" placeholder="Destination Tag" onChange={this.handleChange} />
           <br/>
-          <input type="text" name="signupName" placeholder="Username" onChange={this.handleChange} />
+          <input className = "text" type="text" name="signupName" placeholder="Username" onChange={this.handleChange} />
           <br/>
-          <button onClick = {this.signup}>Signup</button>
+          <button className = "button" onClick = {this.signup}>Signup</button>
         </div>
         
       </div>
