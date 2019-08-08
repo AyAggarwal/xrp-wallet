@@ -9,7 +9,6 @@ class login extends Component {
       signupName: "",
       destTag: "",
       username: "",
-      password: "",
       showMenu: false,
       errors: {}
     };
@@ -20,6 +19,7 @@ class login extends Component {
     this.showMenu = this.showMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
     this.loginWallet = this.loginWallet.bind(this);
+    this.signup = this.singup.bind(this)
   }
 
 
@@ -49,13 +49,41 @@ class login extends Component {
   loginWallet(event) {
     event.preventDefault();
     localStorage.clear();
-    localStorage.setItem("username", this.state.username)
-    this.props.history.push("/wallet")
+    let path = "http://localhost:4000/user/" + this.state.username
+    let frame = this
+
+    axios.get(path)
+    .then(function (response) {
+      localStorage.setItem("balance", response.data.balance)
+      localStorage.setItem("destTag", response.data.destTag)
+      localStorage.setItem("username", frame.state.username)
+      console.log(response)
+      frame.props.history.push("/wallet")
+    })
+    .catch(function (error) {
+      alert("Invalid User")
+    })   
   }
 
   singup(event) {
     event.preventDefault();
+    let path = "http://localhost:4000/user/"
+    let frame = this
 
+    axios.post(path, {
+      username: frame.state.signupName,
+      destTag: frame.state.destTag,
+      balance: "100"
+    })
+    .then(function (response) {
+      localStorage.setItem("balance", response.data.balance)
+      localStorage.setItem("destTag", response.data.destTag)
+      localStorage.setItem("username", response.data.username)
+      frame.props.history.push("/wallet")
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
   }
 
   //utility functions
@@ -107,6 +135,8 @@ class login extends Component {
           <input type="text" name="destTag" placeholder="Destination Tag" onChange={this.handleChange} />
           <br/>
           <input type="text" name="signupName" placeholder="Username" onChange={this.handleChange} />
+          <br/>
+          <button onClick = {this.signup}>Signup</button>
         </div>
         
       </div>
