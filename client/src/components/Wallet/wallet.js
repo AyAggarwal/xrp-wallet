@@ -47,6 +47,10 @@ class wallet extends Component {
     }
 
 
+    /*
+    Happens every 5 seconds. Hits the transactions endpoint, and if the returned transactions array has increased
+    in length, then it will scan the latest transaction and deposit money into the respective account (see updateDB())
+    */
     async queryBalance() {
         try {
             console.log("working")
@@ -109,6 +113,7 @@ class wallet extends Component {
 
     }
 
+    //if new transaction, updates db counter and balance
     async updateDB(dbindex, destination_tag, balanceChange) {
         console.log(dbindex)
         console.log(destination_tag)
@@ -160,7 +165,7 @@ class wallet extends Component {
         }
     }
 
-
+    //sends payment 
     handleClickSend(e) {
         e.preventDefault();
         let path = "http://localhost:3000/v1/payments"

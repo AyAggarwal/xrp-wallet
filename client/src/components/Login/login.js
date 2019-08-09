@@ -54,6 +54,7 @@ class login extends Component {
       this.props.history.push("/admin")
       return
     }
+    //get user
     let path = "http://localhost:4000/user/" + this.state.username
     let frame = this
 
@@ -75,6 +76,7 @@ class login extends Component {
     let path = "http://localhost:4000/user/"
     let frame = this
 
+    //post user
     axios.post(path, {
       username: frame.state.signupName,
       destTag: frame.state.destTag,

@@ -45,6 +45,7 @@ class admin extends Component {
             });
     }
 
+    //check this and manually set "counter" to this number in redis if broken
     getCounter() {
         let transactions_path = "http://localhost:3000/v1/accounts/r465pZJwxqF5m1zXkob7KakodLovtcoBJ8/transactions"
         let frame = this
